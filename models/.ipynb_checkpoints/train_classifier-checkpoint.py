@@ -39,8 +39,8 @@ def load_data(database_filepath):
     """
     
     
-    engine = create_engine('sqlite:///InsertDatabaseName.db')
-    df = pd.read_sql_table(database_filepath, engine).drop(columns=['id'])
+    engine = create_engine(f'sqlite:///{database_filepath}')
+    df = pd.read_sql_table('DisasterResponse', engine).drop(columns=['id'])
     X = df['message'].values
     Y = df.drop(columns=['message', 'original', 'genre']).values
     category_names = [col[:-2] for col in df.drop(
