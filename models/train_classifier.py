@@ -12,7 +12,7 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 
 from sklearn.metrics import confusion_matrix, classification_report
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.multioutput import MultiOutputClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
@@ -35,7 +35,7 @@ def load_data(database_filepath):
     df = pd.read_sql_table('DisasterResponse', engine).drop(columns=['id'])
     X = df['message'].values
     Y = df.drop(columns=['message', 'original', 'genre']).values
-    category_names = [col[:-2] for col in df.drop(columns=['message', 'original', 'genre'])]
+    category_names = [col for col in df.drop(columns=['message', 'original', 'genre'])]
     return X, Y, category_names
 
 def tokenize(text):
@@ -80,13 +80,20 @@ def build_model():
    
     # Set hyperparameters for the pipeline
     parameters = {
-        'clf__estimator__C': 10.0,
-        'clf__estimator__max_iter': 200,
-        'clf__estimator__solver': 'liblinear',
-        'vect__max_df': 0.75
+    #removing very common words (e.g., "the", "and") may be useful
+    'vect__max_df': [0.75, 1.0],
+    # Chose not to optimise by rare terms
+    # Chose not to alter by reducing the count of tokens
+    # Optimise regularisation strength for overfitting
+    'clf__estimator__C': [0.01, 0.1, 1.0, 10.0],
+    # Different can affect convergence speed and model performance
+    'clf__estimator__solver': ['liblinear', 'saga'],
+    'clf__estimator__max_iter': [200, 300]
     }
-    pipeline.set_params(**parameters)
-    return pipeline
+
+    cv = GridSearchCV(pipeline, param_grid=parameters)
+    
+    return cv
 
 def evaluate_model(model, X_test, y_test, category_names, show_plot=False):
     """ Function to evaluate the model's performance.
