@@ -73,7 +73,7 @@ def build_model():
     
     
     pipeline = Pipeline([
-        ('vect', CountVectorizer(tokenizer=tokenize)),
+        ('vect', CountVectorizer(tokenizer=tokenize, stop_words='english')),
         ('tfidf', TfidfTransformer()),
         ('clf', MultiOutputClassifier(LogisticRegression()))
     ])
@@ -87,8 +87,7 @@ def build_model():
     # Optimise regularisation strength for overfitting
     'clf__estimator__C': [0.01, 0.1, 1.0, 10.0],
     # Different can affect convergence speed and model performance
-    'clf__estimator__solver': ['liblinear', 'saga'],
-    'clf__estimator__max_iter': [200, 300]
+    'clf__estimator__solver': ['liblinear', 'saga']
     }
 
     cv = GridSearchCV(pipeline, param_grid=parameters)

@@ -62,8 +62,19 @@ def clean_data(df):
     # Concatenate the original dataframe with the new `categories` dataframe
     df = pd.concat([df, categories], axis=1)
     # Remove duplicates
-    cleaned_df = df.drop_duplicates()
-    assert len(cleaned_df[cleaned_df.duplicated()]) == 0
+    df = df.drop_duplicates()
+    
+    assert len(df[df.duplicated()]) == 0
+
+    # drop messages with nulls as we need dataset to be complete for prediction
+    df = df.dropna(subset=['message','original'])
+
+    # drop messages with nulls from categories
+    cleaned_df = df.dropna()
+    assert cleaned_df.isna().sum().max() == 0, (
+        "there are still entries with missing data")
+
+    
     
     
     
