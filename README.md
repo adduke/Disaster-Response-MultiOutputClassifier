@@ -1,6 +1,6 @@
 # Disaster Response Project
 
-Project contains all files to understand what impacts the Ofsted Rating for Schools in England 2022-23
+Project contains all files to classify disaster response messages.
 
 <p align="center">
   <a href=https://www.google.com/url?sa=i&url=https%3A%2F%2Fblogs.egu.eu%2Fdivisions%2Fnh%2F2021%2F06%2F&psig=AOvVaw1ITC4tybqI-iZCl1wCaVX6&ust=1722348290727000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPjHsse1zIcDFQAAAAAdAAAAABAR>
@@ -59,14 +59,12 @@ There are 2 scripts available here to showcase work related to the above questio
 The main file to is the web app, simply run in terminal 'run.py' that allows the user to create a disaster message that can be classified by the model.
 
 The notebooks folder was used for all necessary development of our model.
-
+```
 Disaster-Response-MultiOutputClassifier
 │
 ├── data
 │ ├── disaster_categories.csv
 │ ├── disaster_messages.csv
-│ ├── categories.csv
-│ ├── messages.csv
 │ ├── Twitter-sentiment-self-drive-DFE.csv
 │ ├── test_engine.ipynb
 │ └── process_data.py
@@ -94,7 +92,7 @@ Disaster-Response-MultiOutputClassifier
 ├── requirements.txt
 ├── README.md
 └── setup.py
-
+```
 
 
 
@@ -117,4 +115,4 @@ Disaster-Response-MultiOutputClassifier
 
 ## Licensing, Authors, Acknowledgements<a name="licensing"></a>
 
-Must give credit to .gov/uk for the data.  You can find the Licensing for the data and other descriptive information at the .gov/uk link available [here](https://www.gov.uk/government/collections/school-and-college-performance-measures?_ga=2.105303552.284626896.1717939438-727414179.1717512892).  Otherwise, feel free to use the code here as you would like! 
+Must give credit to Appen.com/ for the data.  You can find the Licensing for the data and other descriptive information at link available [here](https://www.appen.com/).  Otherwise, feel free to use the code here as you would like! 

@@ -1,6 +1,6 @@
 # Disaster Response Project
 
-Project contains all files to understand what impacts the Ofsted Rating for Schools in England 2022-23
+Project contains all files to classify disaster response messages.
 
 <p align="center">
   <a href=https://www.google.com/url?sa=i&url=https%3A%2F%2Fblogs.egu.eu%2Fdivisions%2Fnh%2F2021%2F06%2F&psig=AOvVaw1ITC4tybqI-iZCl1wCaVX6&ust=1722348290727000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPjHsse1zIcDFQAAAAAdAAAAABAR>
@@ -24,6 +24,9 @@ There should be no necessary libraries to run the code here beyond the Anaconda 
 
 All packages required are in the requirements.txt.
 
+
+
+
 ## Project Motivation<a name="motivation"></a>
 
 #### Project Motivation
@@ -31,6 +34,7 @@ When disasters strike, there’s often a surge of messages from various sources�
 
 #### The Challenge
 Sorting through thousands of disaster-related messages manually isn’t just time-consuming; it can also lead to delays in getting help to where it’s needed. This is where automated systems can step in to make a difference.
+
 
 #### What We’re Trying to Do
 The Disaster-Response-MultiOutputClassifier project is about making the process a bit easier and more efficient. Our goals include:
@@ -41,8 +45,11 @@ The Disaster-Response-MultiOutputClassifier project is about making the process 
 
 3) Seamless Integration: We hope to create a tool that can be easily integrated into existing systems, helping teams work more effectively.
 
+
 #### Why It Matters
 Our hope is that by automating the categorization of messages, we can assist relief organizations in managing their workload. This way, they can focus more on providing the necessary support and aid where it’s most needed.
+
+
 
 
 ## File Descriptions <a name="files"></a>
@@ -52,14 +59,12 @@ There are 2 scripts available here to showcase work related to the above questio
 The main file to is the web app, simply run in terminal 'run.py' that allows the user to create a disaster message that can be classified by the model.
 
 The notebooks folder was used for all necessary development of our model.
-
+```
 Disaster-Response-MultiOutputClassifier
 │
 ├── data
 │ ├── disaster_categories.csv
 │ ├── disaster_messages.csv
-│ ├── categories.csv
-│ ├── messages.csv
 │ ├── Twitter-sentiment-self-drive-DFE.csv
 │ ├── test_engine.ipynb
 │ └── process_data.py
@@ -87,7 +92,7 @@ Disaster-Response-MultiOutputClassifier
 ├── requirements.txt
 ├── README.md
 └── setup.py
-
+```
 
 
 
@@ -105,6 +110,9 @@ Disaster-Response-MultiOutputClassifier
 
 4. Click the `PREVIEW` button to open the homepage
 
+
+
+
 ## Licensing, Authors, Acknowledgements<a name="licensing"></a>
 
-Must give credit to .gov/uk for the data.  You can find the Licensing for the data and other descriptive information at the .gov/uk link available [here](https://www.gov.uk/government/collections/school-and-college-performance-measures?_ga=2.105303552.284626896.1717939438-727414179.1717512892).  Otherwise, feel free to use the code here as you would like! 
+Must give credit to Appen.com/ for the data.  You can find the Licensing for the data and other descriptive information at link available [here](https://www.appen.com/).  Otherwise, feel free to use the code here as you would like! 
