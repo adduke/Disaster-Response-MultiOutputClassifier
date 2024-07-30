@@ -33,17 +33,29 @@ def clean_data(df):
     # Extract the first row to get category names
     row = categories.head(1)
     category_colnames = row.values.tolist()[0]
-    # Rename columns of the categories dataframe
-    categories.columns = category_colnames
+    # Rename columns of the categories dataframe with clearly named columns
+
+    categories.columns = [col[:-2] for col in category_colnames]
 
     # Convert category values to 0 or 1
     for column in categories:
         categories[column] = categories[column].apply(lambda x: x[-1])  # Keep only the last character
         categories[column] = pd.to_numeric(categories[column])  # Convert to numeric type
 
+    
+    # Drop rows where classification is not binary, strictly keep 0s and 1s only
+    remove_anomalies = []
+    for col in categories.columns:
+        remove_anomalies.append(list(categories[categories[col] == 2].index))
+    categories = categories.drop(index=remove_anomalies[0])
+    assert categories.max().unique()[0] == 1, "classes exist greater than 1"
+    assert categories.min().unique()[0] == 0, "classes exist below 0"
+    
     # Drop columns with only one unique value (not useful for classification)
     one_classifier_columns = [col for col in categories.columns if categories[col].nunique() < 2]
     categories = categories.drop(columns=one_classifier_columns)
+    assert categories.nunique().value_counts().shape  == (1,), (
+    "A column in categories exists without 2 classes")
 
     # Drop the original categories column from the dataframe
     df = df.drop(columns=['categories'])
@@ -51,6 +63,9 @@ def clean_data(df):
     df = pd.concat([df, categories], axis=1)
     # Remove duplicates
     cleaned_df = df.drop_duplicates()
+    assert len(cleaned_df[cleaned_df.duplicated()]) == 0
+    
+    
     
     return cleaned_df
 

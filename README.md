@@ -1,6 +1,6 @@
 # Disaster Response Project
 
-Project contains all files to classify disaster response messages.
+Project contains all files to classify disaster response messages into 36 categories.
 
 
 <p align="center">
@@ -116,4 +116,4 @@ Disaster-Response-MultiOutputClassifier
 
 ## Licensing, Authors, Acknowledgements<a name="licensing"></a>
 
-Must give credit to Appen.com/ for the data.  You can find the Licensing for the data and other descriptive information at link available [here](https://www.appen.com/).  Otherwise, feel free to use the code here as you would like! 
+Must give credit to appen.com for the data.  You can find the Licensing for the data and other descriptive information at link available [here](https://www.appen.com/).  Otherwise, feel free to use the code here as you would like! 
